@@ -1,26 +1,557 @@
 @import "tailwindcss";
 
+/* ===== VARIABLES CSS PERSONALIZADAS ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: rgb(27, 4, 155);
+  --accent-color: yellowgreen;
+  --dark-bg: #111114;
+  --shadow-color: rgb(97, 97, 100);
+  --transition-speed: 0.4s;
+  --mobile-bg: #4d4d5c8a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(109deg, rgba(19, 19, 48, 1) 22%, rgba(126, 126, 143, 1) 53%, rgba(35, 40, 41, 1) 76%);
+  color: whitesmoke;
+  
+}
+
+/* ===== HEADER ===== */
+header {
+  height: 100px;
+  background: var(--dark-bg);
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.navbar a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 10px;
+  transition: var(--transition-speed);
+}
+
+.mostrar-menu,
+.ocultar-menu {
+  font-size: 30px;
+  cursor: pointer;
+  color: aliceblue;
+  transition: var(--transition-speed);
+  display: none;
+}
+
+.mostrar-menu {
+  order: 1;
+}
+
+.navbar {
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.mostrar-menu:hover,
+.ocultar-menu:hover {
+  color: var(--accent-color);
+  text-shadow: 0px 0px 21px var(--accent-color);
+}
+
+#check {
+  display: none;
+}
+
+/* ===== BANNER ===== */
+#banner {
+  display: flex;
+  height: 100vh;
+  background-position: center;
+  width: 100%;
+  left: 0;
+}
+
+#banner .videofondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.contenido-banner video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contenido-banner {
+  position: relative;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenido-banner img {
+  position: absolute;
+  z-index: 0;
+  border-radius: 100%;
+  top: 38%;
+  border: solid white;
+  filter: grayscale(50%);
+  transition: 0.8s;
+  max-width: 90vw;
+  height: auto;
+  left: 15%;
+  transform: translateX(-50%);
+}
+
+.contenido-banner img:hover {
+  filter: blur(0px);
+}
+
+.contenido-banner h3 {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.contenido-banner h3 span {
+  font-weight: 800;
+}
+
+.boton {
+  position: absolute;
+  z-index: 1;
+  text-decoration: none;
+  top: 80%;
+  display: inline-block;
+  border-radius: 15px;
+  border: 1px solid var(--accent-color);
+  color: white;
+  padding: 20px 40px;
+  transition: var(--transition-speed);
+}
+
+.boton:hover {
+  background-color: rgba(153, 205, 50, 0.507);
+}
+
+/* ===== INFORMACIÓN PERSONAL ===== */
+#informacion {
+  height: auto;
+}
+
+.p {
+  text-align: center;
+  padding: 30px;
+}
+
+.cont-info {
+  display: flex;
+  justify-content: center;
+  margin: 0 50px;
+  transform: skewX(-5deg);
+}
+
+.cont-info p {
+  height: auto;
+  padding-left: 10px;
+}
+
+.cont-info a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/* ===== PROYECTOS ===== */
+#proyectos {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 10px 40px;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+
+#proyectos img {
+  border-radius: 10px;
+  width: 100%;
+  height: 60%;
+}
+
+#proyectos div {
+  width: 20%;
+  overflow: hidden;
+  margin: 10px 15px;
+  height: 48%;
+  box-shadow: 10px 10px 20px 0 var(--shadow-color);
+}
+
+#proyectos div:hover {
+  border: 1px solid whitesmoke;
+  border-radius: 15px;
+}
+
+#proyectos p,
+#proyectos h3 {
+  padding: 5px;
+}
+
+#titulo h2 {
+  text-align: center;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+#titulo p {
+  text-align: center;
+}
+
+/* ===== BOTONES ===== */
+.boton2 {
+  display: inline-block;
+  text-decoration: none;
+  border: 3px solid var(--accent-color);
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin-top: 15px;
+  color: var(--accent-color);
+  transition: var(--transition-speed);
+}
+
+/* ===== TECNOLOGÍAS ===== */
+#tecnologias {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 50px;
+}
+
+.containerdoble {
+  display: flex;
+}
+
+.text-ico {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  align-items: center;
+}
+
+.contenido-ico {
+  display: grid;
+  grid: auto auto / auto auto auto;
+  grid-gap: 5px;
+  padding: 5px;
+  color: white;
+  animation: mianimacon 5s infinite;
+}
+
+.contenido-ico div {
+  background-color: var(--dark-bg);
+  text-align: center;
+  padding: 5px 10px;
+}
+
+@keyframes mianimacon {
+  100% {
+    text-shadow: 0px 0px 10px white;
+  }
+}
+
+.boton-ico {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.titulo {
+  padding: 15px 0;
+  text-align: center;
+}
+
+/* ===== CONTACTO ===== */
+#contacto {
+  margin: 0 40px;
+}
+
+.contenido-cont {
+  display: grid;
+  grid: auto auto / auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+  animation: mianimacon 5s infinite;
+}
+
+.contenido-cont div {
+  background-color: var(--dark-bg);
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.contenido-cont a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid rgb(36, 35, 35);
+  font-size: smaller;
+}
+
+/* ===== MODIFICACIÓN DE MÁRGENES PARA RESOLUCIONES SUPERIORES A 1200PX ===== */
+@media (min-width: 1200px) {
+  .contenido-banner img {
+    max-width: 600px;
+  }
+  .cont-info {
+    margin: 0 100px;
+  }
+  #proyectos {
+    margin: 10px 80px;
+  }
+  #tecnologias {
+    margin: 0 100px;
+  }
+  #contacto {
+    margin: 0 100px;
+  }
+  header {
+    padding: 0 100px;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .whatsappLinkmobil,
+  .telegramMobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .whatsappLinkdesktop,
+  .telegramDesktop {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* HEADER */
+  #check:checked ~ .menu {
+    right: 0%;
+  }
+
+  .mostrar-menu,
+  .ocultar-menu {
+    display: block;
+  }
+
+  .menu {
+    position: fixed;
+    background: var(--mobile-bg);
+    width: 100%;
+    top: 0;
+    text-align: center;
+    padding: 100px 0;
+    transition: 0.8s;
+    right: -100%;
+    z-index: 100;
+  }
+
+  .menu a {
+    display: block;
+    padding: 20px 0;
+  }
+
+  .ocultar-menu {
+    position: absolute;
+    top: 0;
+    right: 25px;
+  }
+
+  /* BANNER */
+  .contenido-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contenido-banner img {
+    margin: 0;
+    top: 15%;
+    left: 50%;
+  }
+
+  .contenido-banner h3 {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .contenido-banner h3 span {
+    font-weight: 600;
+  }
+
+  .boton {
+    margin: 0;
+  }
+
+  /* PROYECTOS */
+  #proyectos {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    height: auto;
+  }
+
+  #proyectos div {
+    width: 17rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+    height: 16rem;
+  }
+
+  /* TECNOLOGÍAS */
+  #tecnologias {
+    height: auto;
+  }
+
+  .containerdoble {
+    flex-direction: column;
+  }
+
+  .text-ico {
+    text-align: center;
+    align-self: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .contenido-ico {
+    display: grid;
+    grid: auto auto auto / auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+
+  .contenido-ico div {
+    background-color: var(--dark-bg);
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .boton-ico {
+    width: 100vw;
+    padding: 0;
+    top: 0;
+  }
+
+  /* GALERÍA */
+  #galeria {
+    flex-direction: column;
+  }
+
+  /* INFORMACIÓN */
+  .cont-info {
+    flex-direction: column;
+    transform: unset;
+    text-align: justify;
+  }
+
+  .cont-info span {
+    text-align: justify;
+  }
+
+  .cont-info img {
+    width: 100%;
+    transform: skewX(-3deg);
+  }
+
+  .cont-info p {
+    width: 100%;
+    margin-top: 11px;
+  }
+
+  /* CONTACTO */
+  .contenido-cont {
+    display: grid;
+    grid: auto auto auto / auto auto;
+    grid-gap: 10px;
+    padding: 0;
+  }
+
+  .contenido-cont div {
+    background-color: var(--dark-bg);
+    text-align: center;
+    padding: 10px 0;
+    width: auto;
+  }
+}
+
+/* ===== UTILIDADES PARA NEXT.JS ===== */
+.next-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    
+  }
+}
+
+/* ===== OPTIMIZACIONES PARA NEXT.JS ===== */
+.next-optimized {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ===== UTILIDADES PARA SOBRESCRIBIR CON TAILWIND ===== */
+/* Permite que Tailwind tenga mayor prioridad cuando uses !important */
+.tailwind-override {
+  /* Esta clase te permite usar !important en Tailwind para sobrescribir CSS personalizado */
+  padding: unset !important;
+}
+
+/* Ejemplo de cómo reducir especificidad de algunos estilos problemáticos */
+.low-specificity {
+  all: unset;
 }
