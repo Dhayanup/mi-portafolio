@@ -30,7 +30,7 @@ const technologies = [
   },
   {
     icon: <Github className="w-16 h-16 text-white" />,
-    name: "GITHOT",
+    name: "GITHUB",
     description: "Almacenamiento en la nube y trabajos grupales",
   },
   {
@@ -71,8 +71,7 @@ export default function TechnologiesSection() {
             {/* Grid de tecnologías */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {technologies.map((tech, index) => (
-                <div
-                  key={index}
+                <div key={index}
                   className="bg-gray-800 p-6 rounded-lg text-center hover:bg-gray-700 transition-colors duration-300 border border-gray-700"
                 >
                   <div className="flex justify-center mb-4">{tech.icon}</div>
